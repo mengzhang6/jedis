@@ -1,15 +1,21 @@
-package meng.study.jedis.jedis;
-
-import java.util.*;
+package morning.cat.hashes;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 
-public class JedisTest {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * @describe: 类描述信息
+ * @author: morningcat.zhang
+ * @date: 2019/4/9 5:03 PM
+ */
+public class JedisSetsTest {
 
     private final static String redisHost = "localhost";
     private final static int redisPort = 6379;
@@ -27,59 +33,6 @@ public class JedisTest {
         if (jedis != null) {
             jedis.close();
         }
-    }
-
-    @Test
-    public void testString() {
-        // 字符串
-        jedis.set("name", "redis5.0.4");
-        String name = jedis.get("name");
-        System.out.println(name);
-
-        jedis.del("name");
-        System.out.println(Objects.isNull(jedis.get("name")));
-    }
-
-    @Test
-    public void testString2() {
-        // 20 +1+5 -1-7 = 18
-        jedis.set("age", "20");
-        System.out.println(jedis.get("age"));
-
-        // +1
-        jedis.incr("age");
-        // +5
-        jedis.incrBy("age", 5);
-
-        System.out.println(jedis.get("age"));
-
-        // -1
-        jedis.decr("age");
-        // -7
-        jedis.decrBy("age", 7);
-
-        System.out.println(jedis.get("age"));
-
-        // print
-        String age = jedis.get("age");
-        System.out.println(age);
-    }
-
-    @Test
-    public void testString3() {
-        // 字符追加
-        jedis.set("key", "I Love ");
-        jedis.append("key", "Gouzi");
-        String vlaue = jedis.get("key");
-        System.out.println(vlaue);
-    }
-
-    @Test
-    public void testString4() {
-        // 若键不存在,则先赋初始值0，再加1
-        jedis.incr("sum");
-        String sum = jedis.get("sum");
-        System.out.println(sum);
     }
 
     @Test
@@ -151,37 +104,4 @@ public class JedisTest {
         jedis.hincrBy("myset", "age", -6);
 
     }
-
-    /**
-     * 测试 连接池
-     */
-    @Test
-    public void testJedisPool() {
-        JedisPoolConfig config = new JedisPoolConfig();
-        // 最大连接数
-        config.setMaxTotal(30);
-        // 最大空闲连接数
-        config.setMaxIdle(10);
-
-        // 获取连接池
-        JedisPool jedisPool = new JedisPool(config, redisHost, redisPort);
-        Jedis jedis = null;
-        try {
-            jedis = jedisPool.getResource();
-            jedis.set("name", "jedis");
-            String name = jedis.get("name");
-            System.out.println(name);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (jedis != null) {
-                jedis.close();
-            }
-            if (jedisPool != null) {
-                jedisPool.close();
-            }
-        }
-
-    }
-
 }
