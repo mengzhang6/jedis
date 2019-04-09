@@ -8,6 +8,9 @@ import redis.clients.jedis.Jedis;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * https://redis.io/commands/#string
+ */
 public class JedisStringsTest {
 
     private final static String redisHost = "localhost";
@@ -35,7 +38,7 @@ public class JedisStringsTest {
     @Test
     public void testString() {
         // 字符串
-        jedis.set("name", "redis5.0.4");
+        jedis.set("strings:name", "redis5.0.4");
         String name = jedis.get("name");
         System.out.println(name);
 
@@ -51,7 +54,7 @@ public class JedisStringsTest {
      */
     @Test
     public void testString2() {
-        String key = "testString2:";
+        String key = "strings:testString2:";
 
         jedis.set(key + "age", "20");
         System.out.println(jedis.get(key + "age"));
@@ -85,7 +88,7 @@ public class JedisStringsTest {
      */
     @Test
     public void testString3() {
-        String key = "testString3:";
+        String key = "strings:testString3:";
 
         jedis.set(key + "name", "how are you ");
         jedis.append(key + "name", "Gouzi");
@@ -103,7 +106,7 @@ public class JedisStringsTest {
      */
     @Test
     public void testString4() {
-        String key = "testString4:";
+        String key = "strings:testString4:";
 
         // 赋值
         String setResult = jedis.set(key + "name", "gouzi");
@@ -132,7 +135,7 @@ public class JedisStringsTest {
 
     @Test
     public void testString5() {
-        String key = "testString5:";
+        String key = "strings:testString5:";
         jedis.set(key + "name", "gouzi xxxxxx");
 
         // 在偏移量的基础上 拼接字符串
@@ -142,7 +145,7 @@ public class JedisStringsTest {
 
     @Test
     public void testString6() {
-        String key = "testString6:";
+        String key = "strings:testString6:";
         jedis.set(key + "name", "gouzi");
 
         Long strlen = jedis.strlen(key + "name");
@@ -153,7 +156,7 @@ public class JedisStringsTest {
     @Test
     public void testString7() {
 
-        String key = "testString7:";
+        String key = "strings:testString7:";
         boolean setbit = jedis.setbit(key + "name", 7, "1");
         System.out.println(setbit);
 
@@ -167,7 +170,7 @@ public class JedisStringsTest {
 
     @Test
     public void testString8() {
-        String key = "testString8:";
+        String key = "strings:testString8:";
 
         jedis.set(key + "name", "gouzi");
         jedis.set(key + "age", "24");
@@ -182,7 +185,7 @@ public class JedisStringsTest {
 
     @Test
     public void testString9() {
-        String key = "testString9:";
+        String key = "strings:testString9:";
 
         jedis.set(key + "num", "3.14");
         Double result = jedis.incrByFloat(key + "num", 3.14);

@@ -6,7 +6,7 @@ import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 /**
- * @describe: 类描述信息
+ * @describe: https://redis.io/commands/#list
  * @author: morningcat.zhang
  * @date: 2019/4/9 5:04 PM
  */
@@ -33,7 +33,35 @@ public class JedisListsTest {
 
     @Test
     public void test1() {
+        String key = "lists:test1:";
+
+    }
+
+    @Test
+    public void test2(){
+
+    }
+
+    @Test
+    public void test3(){
 
 
     }
+
+    @Test
+    public void test4(){
+
+    }
+
+    @Test
+    public void test5(){
+
+    }
+
+    @Test
+    public void test6(){
+
+    }
+
+
 }

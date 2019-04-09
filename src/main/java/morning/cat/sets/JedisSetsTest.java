@@ -6,7 +6,7 @@ import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 /**
- * @describe: 类描述信息
+ * @describe: https://redis.io/commands/#set
  * @author: morningcat.zhang
  * @date: 2019/4/9 5:04 PM
  */
@@ -33,7 +33,7 @@ public class JedisSetsTest {
 
     @Test
     public void test1() {
-
+        String key = "sets:test1:";
 
     }
 }
