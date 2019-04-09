@@ -6,7 +6,7 @@ import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 /**
- * @describe: https://redis.io/commands/#set
+ * @describe: {link https://redis.io/commands/#set}
  * @author: morningcat.zhang
  * @date: 2019/4/9 5:04 PM
  */

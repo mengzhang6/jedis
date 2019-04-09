@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * https://redis.io/commands/#string
+ * {link https://redis.io/commands/#string}
  */
 public class JedisStringsTest {
 
