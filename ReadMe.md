@@ -3,35 +3,40 @@
 
 ## 一、环境准备：
 
-1.[下载redis](https://redis.io/)
+1. 下载
 
-2.在Linux机器上部署redis服务
+[下载redis](https://redis.io/)
 
-解压
-tar -xzvf *.tar.gz
+2. 安装
 
-编译
-make
+```jshelllanguage
+$ wget http://download.redis.io/releases/redis-5.0.4.tar.gz
+$ tar xzf redis-5.0.4.tar.gz
+$ cd redis-5.0.4
+$ make
 
-安装 
-make PREFIX=/usr/local/redis install
 
-将配置文件拷贝出来
-cp redis.conf /usr/local/redis/
+$ src/redis-server
 
-3.启动redis
 
-./bin/redis-server ./redis.conf
+$ src/redis-cli
+redis> set foo bar
+OK
+redis> get foo
+"bar"
+```
 
-4.jedis
+3. jedis
 
 Jedis 是 Redis 官方首选的 Java 客户端开发包
-
+```
 <dependency>
 	<groupId>redis.clients</groupId>
 	<artifactId>jedis</artifactId>
-	<version>2.9.0</version>
+	<version>[2.9.0)</version>
 </dependency>
+```
+
 
 
 ## 二、拓展知识：
