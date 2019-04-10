@@ -1,20 +1,19 @@
-package morning.cat.sets;
+package morning.cat.datatype;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 /**
- * @describe: {link https://redis.io/commands/#set}
+ * @describe: 类描述信息
  * @author: morningcat.zhang
- * @date: 2019/4/9 5:04 PM
+ * @date: 2019/4/10 9:41 AM
  */
-public class JedisSetsTest {
+public class BaseTest {
 
     private final static String redisHost = "localhost";
     private final static int redisPort = 6379;
-    static Jedis jedis = null;
+    protected static Jedis jedis = null;
 
     @BeforeClass
     public static void beforeClass() {
@@ -30,10 +29,4 @@ public class JedisSetsTest {
         }
     }
 
-
-    @Test
-    public void test1() {
-        String key = "sets:test1:";
-
-    }
 }

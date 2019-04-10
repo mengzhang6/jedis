@@ -1,9 +1,7 @@
-package morning.cat.hashes;
+package morning.cat.datatype.hashes;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import morning.cat.datatype.BaseTest;
 import org.junit.Test;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.ScanResult;
 
 import java.util.HashMap;
@@ -16,25 +14,7 @@ import java.util.Set;
  * @author: morningcat.zhang
  * @date: 2019/4/9 5:03 PM
  */
-public class JedisHashesTest {
-
-    private final static String redisHost = "localhost";
-    private final static int redisPort = 6379;
-    static Jedis jedis = null;
-
-    @BeforeClass
-    public static void beforeClass() {
-        if (jedis == null) {
-            jedis = new Jedis(redisHost, redisPort);
-        }
-    }
-
-    @AfterClass
-    public static void afterClass() {
-        if (jedis != null) {
-            jedis.close();
-        }
-    }
+public class JedisHashesTest extends BaseTest {
 
     /**
      * hset 赋值

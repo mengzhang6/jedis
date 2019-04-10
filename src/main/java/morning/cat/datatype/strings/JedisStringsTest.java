@@ -1,9 +1,7 @@
-package morning.cat.strings;
+package morning.cat.datatype.strings;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import morning.cat.datatype.BaseTest;
 import org.junit.Test;
-import redis.clients.jedis.Jedis;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,25 +9,7 @@ import java.util.Objects;
 /**
  * {link https://redis.io/commands/#string}
  */
-public class JedisStringsTest {
-
-    private final static String redisHost = "localhost";
-    private final static int redisPort = 6379;
-    static Jedis jedis = null;
-
-    @BeforeClass
-    public static void beforeClass() {
-        if (jedis == null) {
-            jedis = new Jedis(redisHost, redisPort);
-        }
-    }
-
-    @AfterClass
-    public static void afterClass() {
-        if (jedis != null) {
-            jedis.close();
-        }
-    }
+public class JedisStringsTest extends BaseTest {
 
     /**
      * set
@@ -39,11 +19,11 @@ public class JedisStringsTest {
     public void testString() {
         // 字符串
         jedis.set("strings:name", "redis5.0.4");
-        String name = jedis.get("name");
+        String name = jedis.get("strings:name");
         System.out.println(name);
 
         jedis.del("name");
-        System.out.println(Objects.isNull(jedis.get("name")));
+        System.out.println(Objects.isNull(jedis.get("strings:name")));
     }
 
     /**
